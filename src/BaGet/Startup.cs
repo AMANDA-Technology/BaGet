@@ -57,8 +57,8 @@ namespace BaGet
         private void ConfigureBaGetApplication(BaGetApplication app)
         {
             // Add database providers.
-            app.AddAzureTableDatabase();
-            app.AddMySqlDatabase();
+            //app.AddAzureTableDatabase();
+            //app.AddMySqlDatabase();
             app.AddPostgreSqlDatabase();
             app.AddSqliteDatabase();
             app.AddSqlServerDatabase();
@@ -67,11 +67,11 @@ namespace BaGet
             app.AddFileStorage();
             app.AddAliyunOssStorage();
             app.AddAwsS3Storage();
-            app.AddAzureBlobStorage();
+            //app.AddAzureBlobStorage();
             app.AddGoogleCloudStorage();
 
             // Add search providers.
-            app.AddAzureSearch();
+            //app.AddAzureSearch();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

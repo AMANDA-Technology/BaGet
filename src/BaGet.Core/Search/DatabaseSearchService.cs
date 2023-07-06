@@ -92,14 +92,14 @@ namespace BaGet.Core
                 frameworks: null);
 
             var packageIds = await search
-                .OrderByDescending(p => p.Downloads)
-                .Select(p => p.Id)
+                .Select(p => new { p.Id, p.Downloads})
                 .Distinct()
+                .OrderByDescending(p => p.Downloads)
                 .Skip(request.Skip)
                 .Take(request.Take)
                 .ToListAsync(cancellationToken);
 
-            return _searchBuilder.BuildAutocomplete(packageIds);
+            return _searchBuilder.BuildAutocomplete(packageIds.Select(x => x.Id).ToList());
         }
 
         public async Task<AutocompleteResponse> ListPackageVersionsAsync(
