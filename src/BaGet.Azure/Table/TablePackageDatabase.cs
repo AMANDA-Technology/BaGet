@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using BaGet.Azure.Extensions;
 using BaGet.Core;
 using Microsoft.Azure.Cosmos.Table;
 using Microsoft.Extensions.Logging;

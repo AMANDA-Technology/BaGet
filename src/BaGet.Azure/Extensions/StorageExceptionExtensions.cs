@@ -1,8 +1,8 @@
 using System.Net;
 
-namespace BaGet.Azure
+namespace BaGet.Azure.Extensions
 {
-    using StorageException = Microsoft.WindowsAzure.Storage.StorageException;
+    using StorageException = Microsoft.Azure.Storage.StorageException;
     using TableStorageException = Microsoft.Azure.Cosmos.Table.StorageException;
 
     internal static class StorageExceptionExtensions

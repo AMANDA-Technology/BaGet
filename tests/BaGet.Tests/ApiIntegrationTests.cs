@@ -45,38 +45,40 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@context"": {
-    ""@vocab"": ""http://schema.nuget.org/schema#"",
-    ""@base"": ""http://localhost/v3/registration""
-  },
-  ""totalHits"": 1,
-  ""data"": [
-    {
-      ""id"": ""TestData"",
-      ""version"": ""1.2.3"",
-      ""description"": ""Test description"",
-      ""authors"": [
-        ""Test author""
-      ],
-      ""iconUrl"": """",
-      ""licenseUrl"": """",
-      ""projectUrl"": """",
-      ""registration"": ""http://localhost/v3/registration/testdata/index.json"",
-      ""summary"": """",
-      ""tags"": [],
-      ""title"": """",
-      ""totalDownloads"": 0,
-      ""versions"": [
-        {
-          ""@id"": ""http://localhost/v3/registration/testdata/1.2.3.json"",
-          ""version"": ""1.2.3"",
-          ""downloads"": 0
-        }
-      ]
-    }
-  ]
-}", json);
+            Assert.Equal("""
+                         {
+                           "@context": {
+                             "@vocab": "http://schema.nuget.org/schema#",
+                             "@base": "http://localhost/v3/registration"
+                           },
+                           "totalHits": 1,
+                           "data": [
+                             {
+                               "id": "TestData",
+                               "version": "1.2.3",
+                               "description": "Test description",
+                               "authors": [
+                                 "Test author"
+                               ],
+                               "iconUrl": "",
+                               "licenseUrl": "",
+                               "projectUrl": "",
+                               "registration": "http://localhost/v3/registration/testdata/index.json",
+                               "summary": "",
+                               "tags": [],
+                               "title": "",
+                               "totalDownloads": 0,
+                               "versions": [
+                                 {
+                                   "@id": "http://localhost/v3/registration/testdata/1.2.3.json",
+                                   "version": "1.2.3",
+                                   "downloads": 0
+                                 }
+                               ]
+                             }
+                           ]
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -87,14 +89,16 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@context"": {
-    ""@vocab"": ""http://schema.nuget.org/schema#"",
-    ""@base"": ""http://localhost/v3/registration""
-  },
-  ""totalHits"": 0,
-  ""data"": []
-}", json);
+            Assert.Equal("""
+                         {
+                           "@context": {
+                             "@vocab": "http://schema.nuget.org/schema#",
+                             "@base": "http://localhost/v3/registration"
+                           },
+                           "totalHits": 0,
+                           "data": []
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -107,15 +111,17 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@context"": {
-    ""@vocab"": ""http://schema.nuget.org/schema#""
-  },
-  ""totalHits"": 1,
-  ""data"": [
-    ""TestData""
-  ]
-}", json);
+            Assert.Equal("""
+                         {
+                           "@context": {
+                             "@vocab": "http://schema.nuget.org/schema#"
+                           },
+                           "totalHits": 1,
+                           "data": [
+                             "TestData"
+                           ]
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -126,13 +132,15 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@context"": {
-    ""@vocab"": ""http://schema.nuget.org/schema#""
-  },
-  ""totalHits"": 0,
-  ""data"": []
-}", json);
+            Assert.Equal("""
+                         {
+                           "@context": {
+                             "@vocab": "http://schema.nuget.org/schema#"
+                           },
+                           "totalHits": 0,
+                           "data": []
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -145,15 +153,17 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@context"": {
-    ""@vocab"": ""http://schema.nuget.org/schema#""
-  },
-  ""totalHits"": 1,
-  ""data"": [
-    ""1.2.3""
-  ]
-}", json);
+            Assert.Equal("""
+                         {
+                           "@context": {
+                             "@vocab": "http://schema.nuget.org/schema#"
+                           },
+                           "totalHits": 1,
+                           "data": [
+                             "1.2.3"
+                           ]
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -164,13 +174,15 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@context"": {
-    ""@vocab"": ""http://schema.nuget.org/schema#""
-  },
-  ""totalHits"": 0,
-  ""data"": []
-}", json);
+            Assert.Equal("""
+                         {
+                           "@context": {
+                             "@vocab": "http://schema.nuget.org/schema#"
+                           },
+                           "totalHits": 0,
+                           "data": []
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -182,7 +194,7 @@ namespace BaGet.Tests
             var content = await response.Content.ReadAsStringAsync();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{""versions"":[""1.2.3""]}", content);
+            Assert.Equal("""{"versions":["1.2.3"]}""", content);
         }
 
         [Fact]
@@ -242,61 +254,63 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@id"": ""http://localhost/v3/registration/testdata/index.json"",
-  ""@type"": [
-    ""catalog:CatalogRoot"",
-    ""PackageRegistration"",
-    ""catalog:Permalink""
-  ],
-  ""count"": 1,
-  ""items"": [
-    {
-      ""@id"": ""http://localhost/v3/registration/testdata/index.json"",
-      ""count"": 1,
-      ""lower"": ""1.2.3"",
-      ""upper"": ""1.2.3"",
-      ""items"": [
-        {
-          ""@id"": ""http://localhost/v3/registration/testdata/1.2.3.json"",
-          ""packageContent"": ""http://localhost/v3/package/testdata/1.2.3/testdata.1.2.3.nupkg"",
-          ""catalogEntry"": {
-            ""downloads"": 0,
-            ""hasReadme"": false,
-            ""packageTypes"": [
-              ""Dependency""
-            ],
-            ""releaseNotes"": """",
-            ""repositoryUrl"": """",
-            ""id"": ""TestData"",
-            ""version"": ""1.2.3"",
-            ""authors"": ""Test author"",
-            ""dependencyGroups"": [
-              {
-                ""targetFramework"": ""net5.0"",
-                ""dependencies"": []
-              }
-            ],
-            ""description"": ""Test description"",
-            ""iconUrl"": """",
-            ""language"": """",
-            ""licenseUrl"": """",
-            ""listed"": true,
-            ""minClientVersion"": """",
-            ""packageContent"": ""http://localhost/v3/package/testdata/1.2.3/testdata.1.2.3.nupkg"",
-            ""projectUrl"": """",
-            ""published"": ""2020-01-01T00:00:00Z"",
-            ""requireLicenseAcceptance"": false,
-            ""summary"": """",
-            ""tags"": [],
-            ""title"": """"
-          }
-        }
-      ]
-    }
-  ],
-  ""totalDownloads"": 0
-}", json);
+            Assert.Equal("""
+                         {
+                           "@id": "http://localhost/v3/registration/testdata/index.json",
+                           "@type": [
+                             "catalog:CatalogRoot",
+                             "PackageRegistration",
+                             "catalog:Permalink"
+                           ],
+                           "count": 1,
+                           "items": [
+                             {
+                               "@id": "http://localhost/v3/registration/testdata/index.json",
+                               "count": 1,
+                               "lower": "1.2.3",
+                               "upper": "1.2.3",
+                               "items": [
+                                 {
+                                   "@id": "http://localhost/v3/registration/testdata/1.2.3.json",
+                                   "packageContent": "http://localhost/v3/package/testdata/1.2.3/testdata.1.2.3.nupkg",
+                                   "catalogEntry": {
+                                     "downloads": 0,
+                                     "hasReadme": false,
+                                     "packageTypes": [
+                                       "Dependency"
+                                     ],
+                                     "releaseNotes": "",
+                                     "repositoryUrl": "",
+                                     "id": "TestData",
+                                     "version": "1.2.3",
+                                     "authors": "Test author",
+                                     "dependencyGroups": [
+                                       {
+                                         "targetFramework": "net5.0",
+                                         "dependencies": []
+                                       }
+                                     ],
+                                     "description": "Test description",
+                                     "iconUrl": "",
+                                     "language": "",
+                                     "licenseUrl": "",
+                                     "listed": true,
+                                     "minClientVersion": "",
+                                     "packageContent": "http://localhost/v3/package/testdata/1.2.3/testdata.1.2.3.nupkg",
+                                     "projectUrl": "",
+                                     "published": "2020-01-01T00:00:00Z",
+                                     "requireLicenseAcceptance": false,
+                                     "summary": "",
+                                     "tags": [],
+                                     "title": ""
+                                   }
+                                 }
+                               ]
+                             }
+                           ],
+                           "totalDownloads": 0
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -317,17 +331,19 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""@id"": ""http://localhost/v3/registration/testdata/1.2.3.json"",
-  ""@type"": [
-    ""Package"",
-    ""http://schema.nuget.org/catalog#Permalink""
-  ],
-  ""listed"": true,
-  ""packageContent"": ""http://localhost/v3/package/testdata/1.2.3/testdata.1.2.3.nupkg"",
-  ""published"": ""2020-01-01T00:00:00Z"",
-  ""registration"": ""http://localhost/v3/registration/testdata/index.json""
-}", json);
+            Assert.Equal("""
+                         {
+                           "@id": "http://localhost/v3/registration/testdata/1.2.3.json",
+                           "@type": [
+                             "Package",
+                             "http://schema.nuget.org/catalog#Permalink"
+                           ],
+                           "listed": true,
+                           "packageContent": "http://localhost/v3/package/testdata/1.2.3/testdata.1.2.3.nupkg",
+                           "published": "2020-01-01T00:00:00Z",
+                           "registration": "http://localhost/v3/registration/testdata/index.json"
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
@@ -347,10 +363,12 @@ namespace BaGet.Tests
             var json = content.ToPrettifiedJson();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(@"{
-  ""totalHits"": 0,
-  ""data"": []
-}", json);
+            Assert.Equal("""
+                         {
+                           "totalHits": 0,
+                           "data": []
+                         }
+                         """, json.Replace("\r\n", "\n"));
         }
 
         [Fact]
